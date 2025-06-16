@@ -1,0 +1,54 @@
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg custom-bg-dark navbar-dark px-4">
+  <a class="navbar-brand d-flex align-items-center" href="#">
+    <img src=".\assets\LAS logo.png" alt="Logo" class="logo me-2">
+    <span class="ms-2 fw-bold fs-5">Materials Distribution Tracking</span>
+  </a>
+  <div class="ms-auto d-flex align-items-center">
+    <span class="me-4 text-white fw-semibold">Mbayang Seck</span>
+    <button class="btn btn-outline-light">
+      <i class="bi bi-box-arrow-right"></i> Logout
+    </button>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <aside class="col-md-2 custom-bg-dark min-vh-100 p-0 sidebar">
+      <nav class="nav flex-column py-4">
+        <a class="nav-link text-white d-flex align-items-center" routerLink="/home">
+          <i class="bi bi-house-door me-2"></i> Home
+        </a>
+        <a class="nav-link text-white d-flex align-items-center" routerLink="/dashboard">
+          <i class="bi bi-speedometer2 me-2"></i> Dashboard
+        </a>
+        <a class="nav-link text-white d-flex align-items-center" routerLink="/sidebar">
+          <i class="bi bi-list me-2"></i> Sidebar
+        </a>
+        <a class="nav-link text-white d-flex align-items-center" routerLink="/agents">
+          <i class="bi bi-person-badge me-2"></i> Agents
+        </a>
+        <a class="nav-link text-white d-flex align-items-center" routerLink="/services">
+          <i class="bi bi-gear me-2"></i> Services
+        </a>
+        <a class="nav-link text-white d-flex align-items-center" routerLink="/departments">
+          <i class="bi bi-building me-2"></i> Departments
+        </a>
+        <a class="nav-link text-white d-flex align-items-center" routerLink="/distributions">
+          <i class="bi bi-arrow-left-right me-2"></i> Distributions
+        </a>
+        <a class="nav-link text-white d-flex align-items-center" routerLink="/materials">
+          <i class="bi bi-box-seam me-2"></i> Materials
+        </a>
+        <a class="nav-link text-white d-flex align-items-center" routerLink="/type-of-materials">
+          <i class="bi bi-tags me-2"></i> Type of Materials
+        </a>
+      </nav>
+    </aside>
+    <!-- Main Content -->
+    <main class="col-md-10 bg-light py-4 px-5 min-vh-100">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

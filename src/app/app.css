@@ -1,0 +1,37 @@
+body {
+  background: #f8f9fa;
+}
+
+.custom-bg-dark {
+  background-color: #183c80 !important; /* Very dark blue */
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.sidebar {
+  min-height: 100vh;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  padding: 12px 20px;
+  border-radius: 0.375rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-link.active, .nav-link:hover {
+  background: #003366 !important; /* Even darker blue on hover */
+  color: #fff !important;
+}
+
+main {
+  background: #f8f9fa;
+  min-height: 80vh;
+  border-radius: 0.5rem;
+}
