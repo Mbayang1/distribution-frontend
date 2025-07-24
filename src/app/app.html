@@ -1,54 +1,55 @@
 <!-- Top Navbar -->
-<nav class="navbar navbar-expand-lg custom-bg-dark navbar-dark px-4">
+<nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm px-4 py-2">
   <a class="navbar-brand d-flex align-items-center" href="#">
-    <img src=".\assets\LAS logo.png" alt="Logo" class="logo me-2">
-    <span class="ms-2 fw-bold fs-5">Materials Distribution Tracking</span>
+<img src="assets/LAS logo.png" alt="Logo" class="me-2 logo">
+    <span class="fw-bold text-primary fs-5">Materials Distribution</span>
   </a>
   <div class="ms-auto d-flex align-items-center">
-    <span class="me-4 text-white fw-semibold">Mbayang Seck</span>
-    <button class="btn btn-outline-light">
-      <i class="bi bi-box-arrow-right"></i> Logout
+    <span class="me-4 text-dark fw-semibold">Mbayang Seck</span>
+    <button class="btn btn-outline-primary rounded-pill px-3">
+      <i class="bi bi-box-arrow-right me-1"></i> Logout
     </button>
   </div>
 </nav>
 
 <div class="container-fluid">
+  
   <div class="row">
-    <!-- Sidebar -->
-    <aside class="col-md-2 custom-bg-dark min-vh-100 p-0 sidebar">
-      <nav class="nav flex-column py-4">
-        <a class="nav-link text-white d-flex align-items-center" routerLink="/home">
+    <!-- Sidebar Light -->
+    <aside class="col-md-2 bg-light border-end min-vh-100 p-0">
+      <nav class="nav flex-column py-4 px-3">
+        <a class="nav-link text-dark d-flex align-items-center rounded mb-2" routerLink="/home" routerLinkActive="active">
           <i class="bi bi-house-door me-2"></i> Home
         </a>
-        <a class="nav-link text-white d-flex align-items-center" routerLink="/dashboard">
+        <a class="nav-link text-dark d-flex align-items-center rounded mb-2" routerLink="/dashboard" routerLinkActive="active">
           <i class="bi bi-speedometer2 me-2"></i> Dashboard
         </a>
-        <a class="nav-link text-white d-flex align-items-center" routerLink="/sidebar">
-          <i class="bi bi-list me-2"></i> Sidebar
-        </a>
-        <a class="nav-link text-white d-flex align-items-center" routerLink="/agents">
+        <a class="nav-link text-dark d-flex align-items-center rounded mb-2" routerLink="/agents" routerLinkActive="active">
           <i class="bi bi-person-badge me-2"></i> Agents
         </a>
-        <a class="nav-link text-white d-flex align-items-center" routerLink="/services">
+        <a class="nav-link text-dark d-flex align-items-center rounded mb-2" routerLink="/services" routerLinkActive="active">
           <i class="bi bi-gear me-2"></i> Services
         </a>
-        <a class="nav-link text-white d-flex align-items-center" routerLink="/departments">
+        <a class="nav-link text-dark d-flex align-items-center rounded mb-2" routerLink="/departments" routerLinkActive="active">
           <i class="bi bi-building me-2"></i> Departments
         </a>
-        <a class="nav-link text-white d-flex align-items-center" routerLink="/distributions">
+        <a class="nav-link text-dark d-flex align-items-center rounded mb-2" routerLink="/distributions" routerLinkActive="active">
           <i class="bi bi-arrow-left-right me-2"></i> Distributions
         </a>
-        <a class="nav-link text-white d-flex align-items-center" routerLink="/materials">
+        <a class="nav-link text-dark d-flex align-items-center rounded mb-2" routerLink="/materials" routerLinkActive="active">
           <i class="bi bi-box-seam me-2"></i> Materials
         </a>
-        <a class="nav-link text-white d-flex align-items-center" routerLink="/type-of-materials">
+        <a class="nav-link text-dark d-flex align-items-center rounded mb-2" routerLink="/type-of-materials" routerLinkActive="active">
           <i class="bi bi-tags me-2"></i> Type of Materials
         </a>
       </nav>
     </aside>
+
     <!-- Main Content -->
     <main class="col-md-10 bg-light py-4 px-5 min-vh-100">
-      <router-outlet></router-outlet>
+      <div class="bg-white shadow rounded p-4">
+        <router-outlet></router-outlet>
+      </div>
     </main>
   </div>
 </div>

@@ -1,0 +1,57 @@
+/* General Page Styling */
+body {
+  background-color: #f4f6f8;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  color: #333;
+}
+
+/* Hero Section */
+.logo {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+.lead {
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+/* Card Grid */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  border-radius: 1rem;
+  background-color: #ffffff;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.card i {
+  font-size: 2.5rem;
+}
+
+/* Button Styling */
+.btn {
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* Footer */
+footer,
+.text-muted {
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  color: #adb5bd;
+}

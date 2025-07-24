@@ -1,1 +1,110 @@
-<p>distributions-list works!</p>
+<!-- Notification -->
+<div *ngIf="notificationMessage"
+     class="alert mt-2"
+     [ngClass]="notificationType === 'success' ? 'alert-success' : 'alert-danger'">
+  {{ notificationMessage }}
+</div>
+<!-- Titre + bouton -->
+<div class="d-flex justify-content-between align-items-center mt-3">
+  <h2>Liste des distributions</h2>
+  <button class="btn btn-primary" (click)="openAddModal()">Ajouter une attribution</button>
+</div>
+
+<!-- Recherche -->
+<form class="form-inline mt-3 mb-3">
+  <input type="date" [(ngModel)]="searchTerm" class="form-control" placeholder="Rechercher par date" name="search" />
+</form>
+
+<!-- Message si vide -->
+<div class="alert alert-info mt-3" *ngIf="filteredDistributions().length === 0">
+  Aucune attribution trouvée.
+</div>
+
+<!-- Tableau -->
+<table class="table mt-3" *ngIf="filteredDistributions().length > 0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Materiel</th>
+      <th>Quantite</th>
+      <th>Agent</th>
+      <th>Departement</th>
+      <th>Service</th>
+      <th>Date de distribution</th>
+      <th>Notes</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let distribution of filteredDistributions()">
+      <td>{{ distribution.id }}</td>
+      <td>{{ distribution.material_name+" "}} ({{ distribution.type_name}})</td>
+      <td>{{ distribution.quantity }}</td>
+      <td>{{!distribution.agent?'': distribution.prenom+' '+distribution.nom}}</td>
+      <td>{{ !distribution.department?'':distribution.department_name }}</td>
+      <td>{{ !distribution.service?'':distribution.service_name }}</td>
+      <td>{{ distribution.assigned_date | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ distribution.notes }}</td>
+      <td class="d-flex justify-content-end">
+        <button class="btn btn-warning btn-sm me-1 " (click)="openEditModal(distribution)"><i>edit</i></button>
+        <button class="btn btn-danger btn-sm" (click)="deleteDistribution(currentDistribution.id)"><i>delete</i></button>
+        <button class="btn btn-info btn-sm ms-1" (click)="openReturnModal(currentDistribution)"><i>return</i></button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" [ngClass]="{ 'show d-block': showModal }" style="background: rgba(0,0,0,0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ isEditing ? 'Modifier' : 'Ajouter' }} une attribution</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        {{currentDistribution|json}}
+
+<!--departement est une liste deroulante-->
+<ng-container *ngIf="!return">
+     <select [(ngModel)]="currentDistribution.material" class="form-select mb-2">
+
+          <option value="" [defaultSelected]="">Sélectionner un materiel</option>
+          <option *ngFor="let material of materials" [value]="material.material_ID">{{ material.name }}</option>
+        </select>
+
+        <input type="number" [(ngModel)]="currentDistribution.quantity" class="form-control mb-2" placeholder="Quantité" />
+
+        <select [(ngModel)]="currentDistribution.agent" class="form-select mb-2" >
+          <option value="null" [defaultSelected]="">Sélectionner un agent</option>
+          <option *ngFor="let agent of agents" [value]="agent.agent_ID">{{ agent.prenom+' '+ agent.nom }}</option>
+        </select>
+   
+        <select [(ngModel)]="currentDistribution.department" class="form-select mb-2">
+          <option value="null" [defaultSelected]="">Sélectionner un département</option>
+          <option *ngFor="let department of departments" [value]="department.department_ID">{{ department.name }}</option>
+        </select>
+
+        <select [(ngModel)]="currentDistribution.service" class="form-select mb-2">
+          <option value="null" [defaultSelected]="">Sélectionner un service</option>
+          <option *ngFor="let service of services" [value]="service.service_ID">{{ service.name }}</option>
+        </select>
+          <input type="date" [(ngModel)]="currentDistribution.assigned_date" class="form-control mb-2"
+           placeholder="Date d attribution" />
+        <textarea  [(ngModel)]="currentDistribution.notes" class="form-control mb-2" placeholder="Notes" 
+        id="Notes" rows="3"></textarea>
+</ng-container>
+          <input  *ngIf="return" type="date" class="form-control mb-2" id="date_return" 
+          [(ngModel)]="currentDistribution.date_return" placeholder="Date de retour" />
+          <textarea  *ngIf="return" class="form-control mb-2" id="commentaire" 
+          [(ngModel)]="currentDistribution.commentaire" placeholder="commentaire de retour" rows="3"></textarea>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeModal()">Annuler</button>
+        <button class="btn btn-success" (click)="saveDistribution()">
+          {{ isEditing ? 'Enregistrer' : 'Ajouter' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

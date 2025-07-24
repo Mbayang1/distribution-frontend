@@ -7,8 +7,8 @@
 
 <!-- Titre + bouton -->
 <div class="d-flex justify-content-between align-items-center mt-3">
-  <h2>Liste des départements</h2>
-  <button class="btn btn-primary" (click)="openAddModal()">Ajouter un département</button>
+  <h2>Liste des types</h2>
+  <button class="btn btn-primary" (click)="openAddModal()">Ajouter un type</button>
 </div>
 
 <!-- Recherche -->
@@ -17,12 +17,12 @@
 </form>
 
 <!-- Message si vide -->
-<div class="alert alert-info mt-3" *ngIf="filteredDepartments().length === 0">
-  Aucun département trouvé.
+<div class="alert alert-info mt-3" *ngIf="filteredTypes().length === 0">
+  Aucun type trouvé.
 </div>
 
 <!-- Tableau -->
-<table class="table mt-3" *ngIf="filteredDepartments().length > 0">
+<table class="table mt-3" *ngIf="filteredTypes().length > 0">
   <thead>
     <tr>
       <th>ID</th>
@@ -32,13 +32,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let dept of filteredDepartments()">
-      <td>{{ dept.department_ID }}</td>
-      <td>{{ dept.name }}</td>
-      <td>{{ dept.description }}</td>
+    <tr *ngFor="let type of filteredTypes()">
+      <td>{{ type.type_ID }}</td>
+      <td>{{ type.name }}</td>
+      <td>{{ type.description }}</td>
       <td>
-        <button class="btn btn-warning btn-sm me-1" (click)="openEditModal(dept)">Modifier</button>
-        <button class="btn btn-danger btn-sm" (click)="deleteDepartment(dept.department_ID)">Supprimer</button>
+        <button class="btn btn-warning btn-sm me-1" (click)="openEditModal(type)">Modifier</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteType(type.type_ID)">Supprimer</button>
       </td>
     </tr>
   </tbody>
@@ -49,16 +49,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">{{ isEditing ? 'Modifier' : 'Ajouter' }} un département</h5>
+        <h5 class="modal-title">{{ isEditing ? 'Modifier' : 'Ajouter' }} un type</h5>
         <button type="button" class="btn-close" (click)="closeModal()"></button>
       </div>
       <div class="modal-body">
-        <input type="text" [(ngModel)]="currentDepartment.name" class="form-control mb-2" placeholder="Nom du département" />
-        <input type="text" [(ngModel)]="currentDepartment.description" class="form-control" placeholder="Description du département" />
+        {{currentType|json}}
+        <input type="text" [(ngModel)]="currentType.name" class="form-control m-2" placeholder="Nom du type" />
+        <input type="text" [(ngModel)]="currentType.description" class="form-control  m-2" placeholder="label du type" />
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" (click)="closeModal()">Annuler</button>
-        <button class="btn btn-success" (click)="saveDepartment()">
+        <button class="btn btn-success" (click)="saveType()">
           {{ isEditing ? 'Enregistrer' : 'Ajouter' }}
         </button>
       </div>

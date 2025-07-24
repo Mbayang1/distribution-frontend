@@ -1,0 +1,53 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f4f8;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #0077cc;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+.modal {
+  z-index: 1050;
+  transition: opacity 0.3s ease-in-out;
+}
+.modal .modal-dialog {
+  margin-top: 10%;
+}
+.alert {
+  transition: all 0.3s ease-in-out;
+}

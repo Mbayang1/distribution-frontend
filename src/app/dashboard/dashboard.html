@@ -1,0 +1,69 @@
+<div class="container py-5">
+  <!-- Page Title -->
+  <div class="mb-4 text-center">
+    <h2 class="fw-bold">Dashboard Overview</h2>
+    <p class="text-muted">Quick insights into your distributions, agents, and materials</p>
+  </div>
+
+  <!-- Stat Cards -->
+  <div class="row g-4">
+    <div class="col-md-3">
+      <div class="card text-white bg-primary shadow-sm p-3">
+        <div class="card-body text-center">
+          <i class="bi bi-person-check-fill fs-2 mb-2"></i>
+          <h5 class="fw-bold">Total Agents</h5>
+          <h4>{{ stats.total_agents }}</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card text-white bg-success shadow-sm p-3">
+        <div class="card-body text-center">
+          <i class="bi bi-box-fill fs-2 mb-2"></i>
+          <h5 class="fw-bold">Materials</h5>
+          <h4>{{ stats.available_materials }}</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card text-white bg-warning shadow-sm p-3">
+        <div class="card-body text-center">
+          <i class="bi bi-gear-wide-connected fs-2 mb-2"></i>
+          <h5 class="fw-bold">Services</h5>
+          <h4>{{ stats.total_services }}</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card text-white bg-danger shadow-sm p-3">
+        <div class="card-body text-center">
+          <i class="bi bi-arrow-left-right fs-2 mb-2"></i>
+          <h5 class="fw-bold">Distributions</h5>
+          <h4>{{ stats.total_distributions }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Navigation -->
+  <div class="row mt-5 g-4">
+    <div class="col-md-6">
+      <div class="card shadow-sm p-4 text-center">
+        <h5 class="fw-bold mb-3">Manage Agents & Services</h5>
+        <a routerLink="/agents" class="btn btn-outline-primary me-2">Agents</a>
+        <a routerLink="/services" class="btn btn-outline-secondary">Services</a>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card shadow-sm p-4 text-center">
+        <h5 class="fw-bold mb-3">Manage Materials</h5>
+        <a routerLink="/materials" class="btn btn-outline-success me-2">Materials</a>
+        <a routerLink="/type-of-materials" class="btn btn-outline-warning">Types</a>
+      </div>
+    </div>
+  </div>
+</div>

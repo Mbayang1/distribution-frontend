@@ -1,5 +1,78 @@
-<ul>
-  <li *ngFor="let material of materials">
-    {{ material.name }}
-  </li>
-</ul>
+<!-- Notification -->
+<div *ngIf="notificationMessage"
+     class="alert mt-2"
+     [ngClass]="notificationType === 'success' ? 'alert-success' : 'alert-danger'">
+  {{ notificationMessage }}
+</div>
+<!-- Titre + bouton -->
+<div class="d-flex justify-content-between align-items-center mt-3">
+  <h2>Liste des materiels</h2>
+  <button class="btn btn-primary" (click)="openAddModal()">Ajouter un materiel</button>
+</div>
+
+<!-- Recherche -->
+<form class="form-inline mt-3 mb-3">
+  <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Rechercher par nom" name="search" />
+</form>
+
+<!-- Message si vide -->
+<div class="alert alert-info mt-3" *ngIf="filteredMaterials().length === 0">
+  Aucun materiel trouvé.
+</div>
+
+<!-- Tableau -->
+<table class="table mt-3" *ngIf="filteredMaterials().length > 0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>libelle</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let material of filteredMaterials()">
+      <td>{{ material.material_ID }}</td>
+      <td>{{ material.name }}</td>
+      <td>{{ material.description }}</td>
+      <td>{{ material.quantity }}</td>
+      <td>{{ material.type_name }}</td>
+      <td>
+        <button class="btn btn-warning btn-sm me-1" (click)="openEditModal(material)">Modifier</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteMaterial(currentMaterial.material_ID)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" [ngClass]="{ 'show d-block': showModal }" style="background: rgba(0,0,0,0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ isEditing ? 'Modifier' : 'Ajouter' }} un materiel</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        {{currentMaterial|json}}
+        <input type="text" [(ngModel)]="currentMaterial.name" class="form-control mb-2" placeholder="Nom du materiel" />
+        <input type="text" [(ngModel)]="currentMaterial.description" class="form-control mb-2" placeholder="Description du materiel" />
+        <input type="text" [(ngModel)]="currentMaterial.quantity" class="form-control mb-2" placeholder="Quantite du materiel" />
+
+      
+<!--departement est une liste deroulante-->
+        <select [(ngModel)]="currentMaterial.type" class="form-select mb-2">
+          <option value=""  [defaultSelected]="">Sélectionner un type</option>
+          <option *ngFor="let type of type_of_materials" [value]="type.type_ID">{{ type.name }}</option>
+        </select>
+</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeModal()">Annuler</button>
+        <button class="btn btn-success" (click)="saveMaterial()">
+          {{ isEditing ? 'Enregistrer' : 'Ajouter' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
