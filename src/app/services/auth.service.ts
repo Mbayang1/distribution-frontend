@@ -11,16 +11,16 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  signIn(username: string, password: string): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>(`${this.baseUrl}/signin`, {
-      username,
+  signUp(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/signup`, {
+      email,
       password
     });
   }
 
-  login(username: string, password: string): Observable<{ token: string }> {
-  return this.http.post<{ token: string }>(`${this.baseUrl}/login`, {
-    username,
+ login(email: string, password: string): Observable<{ token: string }> {
+  return this.http.post<{ token: string }>(`${this.baseUrl}/auth/login`, {
+    email,
     password
   });
 }

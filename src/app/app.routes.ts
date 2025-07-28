@@ -1,5 +1,5 @@
 import { LoginComponent } from './login/login';
-import { Signin } from './signin/signin';
+import { Signup } from './signup/signup';
 import { LogoutComponent } from './logout/logout';
 import { Routes } from '@angular/router';
 import { DistributionsList } from './components/distributions-list/distributions-list';
@@ -13,8 +13,8 @@ import { Dashboard } from './dashboard/dashboard';
 
 
 export const routes: Routes = [
-  { path: '', component: Signin },
-  { path: 'signin', component: Signin },
+  { path: '', component: Signup },
+  { path: 'signin', component: Signup },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: Home },
   { path: 'dashboard', component: Dashboard },

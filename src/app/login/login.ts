@@ -19,13 +19,13 @@ export class LoginComponent {
   constructor(private http: HttpClient, private auth: AuthService, private router: Router) {}
 
   onLogin() {
-    this.http.post<any>('http://localhost:3000/auth/login', { email: this.email, password: this.password })
-      .subscribe({
-        next: res => {
-          this.auth.login(res.token);
-          this.router.navigate(['/dashboard']);
-        },
-        error: err => alert('Login failed')
-      });
-  }
+  this.auth.login(this.email, this.password).subscribe({
+    next: data => {
+      localStorage.setItem('token', data.token);
+      alert('Login successful');
+      this.router.navigate(['/dashboard']);
+    },
+    error: err => alert('Login failed')
+  });
+}
 }
